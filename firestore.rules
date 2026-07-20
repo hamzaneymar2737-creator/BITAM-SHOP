@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // كل الزوار (زبائن) يقدروا يقرؤوا المنتجات والإعدادات فقط
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if true; // ⚠️ مؤقت لسهولة الإعداد - راجع ملاحظة الأمان في README
+    }
+
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if true; // ⚠️ مؤقت لسهولة الإعداد - راجع ملاحظة الأمان في README
+    }
+
+    // أي شخص يقدر ينشئ طلب (زبون يطلب سلعة)، لكن ما يقدرش يقرأ طلبات الآخرين
+    match /orders/{orderId} {
+      allow create: if true;
+      allow read, update, delete: if true; // ⚠️ مؤقت - راجع ملاحظة الأمان في README
+    }
+  }
+}
