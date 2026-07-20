@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["icons/icon.svg"],
+      includeAssets: ["icons/icon.svg", "web-app-manifest-192x192.png", "web-app-manifest-512x512.png"],
       manifest: {
         name: "Bitam Telecom",
         short_name: "Bitam Telecom",
@@ -20,20 +20,31 @@ export default defineConfig({
         dir: "rtl",
         lang: "ar",
         icons: [
-          {
-            src: "icons/icon.svg",
-            sizes: "any",
-            type: "image/svg+xml",
-            purpose: "any"
-          },
-          {
-            src: "icons/icon.svg",
-            sizes: "any",
-            type: "image/svg+xml",
-            purpose: "maskable"
-          }
-        ]
-      },
+  {
+    src: "icons/icon.svg",
+    sizes: "any",
+    type: "image/svg+xml",
+    purpose: "any"
+  },
+  {
+    src: "web-app-manifest-192x192.png",
+    sizes: "192x192",
+    type: "image/png",
+    purpose: "any"
+  },
+  {
+    src: "web-app-manifest-512x512.png",
+    sizes: "512x512",
+    type: "image/png",
+    purpose: "any"
+  },
+  {
+    src: "web-app-manifest-512x512.png",
+    sizes: "512x512",
+    type: "image/png",
+    purpose: "maskable"
+  }
+],
       workbox: {
         globPatterns: ["**/*.{js,css,html,svg,png,ico}"]
       }
